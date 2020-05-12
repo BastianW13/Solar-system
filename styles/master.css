@@ -34,6 +34,7 @@ body
   top: 0;
   left: 0;
   width: 20vw;
+  min-width: fit-content;
   height: 100%;
   display: none;
 }
@@ -41,7 +42,7 @@ body
 .cMenu
 {
   flex: 1;
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 
