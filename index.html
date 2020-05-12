@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Solar system</title>
+    <link rel="stylesheet" href="./styles/master.css">
+    <script src="./res/Loader.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      window.addEventListener('DOMContentLoaded', async () => {
+        await Loader.init();
+        await Loader.setup();
+        Loader.start();
+      });
+    </script>
+  </head>
+  <body>
+    <canvas id="cvsMain"></canvas>
+    <button id="btnMenu">?</button>
+    <div id="menuBar">
+      <!-- Main menu -->
+      <div class="cMenu" id="menuMain">
+        <button class="cMenuButton" id="btnMenuScaling">Scaling</button>
+        <button class="cMenuButton" id="btnMenuFocus">Focus</button>
+        <div class="cMenuSliderContainer">
+          <label for="inpScalingTime">Time</label>
+          <input class="cMenuSlider" id="inpScalingTime" type="range" min="0" max="50" step="any" value="0">
+        </div>
+        <button class="cMenuButton" id="btnResetSettings">Reset all settings</button>
+      </div>
+      <!-- Scaling menu -->
+      <div class="cMenu" id="menuScaling">
+        <div class="cMenuSliderContainer">
+          <label for="inpScalingAll">All</label>
+          <input class="cMenuSlider" id="inpScalingAll" type="range" min="-30" max="5" step="any" value="0">
+        </div>
+        <div class="cMenuSliderContainer">
+          <label for="inpScalingPlanetSize">Planet size</label>
+          <input class="cMenuSlider" id="inpScalingPlanetSize" type="range" min="-30" max="15" step="any" value="0">
+        </div>
+        <div class="cMenuSliderContainer">
+          <label for="inpScalingPlanetDistance">Planet distance</label>
+          <input class="cMenuSlider" id="inpScalingPlanetDistance" type="range" min="-30" max="5" step="any" value="0">
+        </div>
+        <div class="cMenuSliderContainer">
+          <label for="inpScalingMoonSize">Moon size</label>
+          <input class="cMenuSlider" id="inpScalingMoonSize" type="range" min="-30" max="15" step="any" value="0">
+        </div>
+        <div class="cMenuSliderContainer">
+          <label for="inpScalingMoonDistance">Moon distance</label>
+          <input class="cMenuSlider" id="inpScalingMoonDistance" type="range" min="-30" max="5" step="any" value="0">
+        </div>
+        <div class="cMenuSliderContainer">
+          <label for="inpScalingStarSize">Star size</label>
+          <input class="cMenuSlider" id="inpScalingStarSize" type="range" min="-30" max="5" step="any" value="0">
+        </div>
+        <button class="cMenuButton" id="btnResetScaling">Reset scaling</button>
+        <button class="cMenuButton btnBack">Back</button>
+      </div>
+      <!-- Focus menu -->
+      <div class="cMenu" id="menuFocus">
+        <button class="cMenuButton btnBack">Back</button>
+      </div>
+    </div>
+  </body>
+</html>

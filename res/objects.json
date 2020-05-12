@@ -1,0 +1,236 @@
+{
+  "stars":
+  [
+    {
+      "name": "Sun",
+      "center": {
+        "x": 0, "y": 0
+      },
+      "radiusSize": 1392.684
+    }
+  ],
+
+  "planets":
+  [
+    {
+      "name": "Mercury",
+      "star": "Sun",
+      "radiusRot": 57909,
+      "radiusSize": 2.4397,
+      "rotationTime": 88,
+      "color": "rgb(142, 141, 124)"
+    },
+    {
+      "name": "Venus",
+      "star": "Sun",
+      "radiusRot": 108160,
+      "radiusSize": 6.0518,
+      "rotationTime": 255,
+      "color": "rgb(232,186,126)"
+    },
+    {
+      "name": "Earth",
+      "star": "Sun",
+      "radiusRot": 149600,
+      "radiusSize": 6.37815,
+      "rotationTime": 365,
+      "color": "rgb(79,161,191)"
+    },
+    {
+      "name": "Mars",
+      "star": "Sun",
+      "radiusRot": 227990,
+      "radiusSize": 3.3962,
+      "rotationTime": 687,
+      "color": "rgb(136,73,52)"
+    },
+    {
+      "name": "Jupiter",
+      "star": "Sun",
+      "radiusRot": 778360,
+      "radiusSize": 71.492,
+      "rotationTime": 4329,
+      "color": "rgb(121,103,83)"
+    },
+    {
+      "name": "Saturn",
+      "star": "Sun",
+      "radiusRot": 1433500,
+      "radiusSize": 60.268,
+      "rotationTime": 10751,
+      "color": "rgb(232,192,145)"
+    },
+    {
+      "name": "Uranus",
+      "star": "Sun",
+      "radiusRot": 2872400,
+      "radiusSize": 25.559,
+      "rotationTime": 30664,
+      "color": "rgb(150,182,196)"
+    },
+    {
+      "name": "Neptune",
+      "star": "Sun",
+      "radiusRot": 4498400,
+      "radiusSize": 24.764,
+      "rotationTime": 60148,
+      "color": "rgb(58,108,143)"
+    }
+  ],
+
+  "moons":
+  [
+    {
+      "name": "Moon",
+      "planet": "Earth",
+      "radiusRot": 384,
+      "radiusSize": 1.737,
+      "rotationTime": 27.32
+    },
+    {
+      "name": "Phobos",
+      "planet": "Mars",
+      "radiusRot": 9.38,
+      "radiusSize": 0.0111,
+      "rotationTime": 0.319
+    },
+    {
+      "name": "Deimos",
+      "planet": "Mars",
+      "radiusRot": 23.46,
+      "radiusSize": 0.0062,
+      "rotationTime": 1.262
+    },
+    {
+      "name": "Io",
+      "planet": "Jupiter",
+      "radiusRot": 421.8,
+      "radiusSize": 1.818,
+      "rotationTime": 1.769,
+      "color": "rgb(226,179,61)"
+    },
+    {
+      "name": "Europa",
+      "planet": "Jupiter",
+      "radiusRot": 671.1,
+      "radiusSize": 1.56,
+      "rotationTime": 3.551,
+      "color": "rgb(185, 199, 195)"
+    },
+    {
+      "name": "Ganymede",
+      "planet": "Jupiter",
+      "radiusRot": 1070.4,
+      "radiusSize": 2.6341,
+      "rotationTime": 7.155,
+      "color": "rgb(127, 98, 83)"
+    },
+    {
+      "name": "Callisto",
+      "planet": "Jupiter",
+      "radiusRot": 1882.7,
+      "radiusSize": 2.4084,
+      "rotationTime": 16.69,
+      "color": "rgb(109, 85, 69)"
+    },
+    {
+      "name": "Mimas",
+      "planet": "Saturn",
+      "radiusRot": 185.54,
+      "radiusSize": 0.1982,
+      "rotationTime": 0.942
+    },
+    {
+      "name": "Enceladus",
+      "planet": "Saturn",
+      "radiusRot": 238.04,
+      "radiusSize": 0.2523,
+      "rotationTime": 1.37
+    },
+    {
+      "name": "Tethys",
+      "planet": "Saturn",
+      "radiusRot": 294.67,
+      "radiusSize": 0.5363,
+      "rotationTime": 1.888
+    },
+    {
+      "name": "Dione",
+      "planet": "Saturn",
+      "radiusRot": 377.42,
+      "radiusSize": 0.5625,
+      "rotationTime": 2.737
+    },
+    {
+      "name": "Rhea",
+      "planet": "Saturn",
+      "radiusRot": 527.07,
+      "radiusSize": 0.7645,
+      "rotationTime": 4.518
+    },
+    {
+      "name": "Titan",
+      "planet": "Saturn",
+      "radiusRot": 1221.87,
+      "radiusSize": 2.5755,
+      "rotationTime": 15.95
+    },
+    {
+      "name": "Hyperion",
+      "planet": "Saturn",
+      "radiusRot": 1500.88,
+      "radiusSize": 0.1386,
+      "rotationTime": 21.28
+    },
+    {
+      "name": "Iapetus",
+      "planet": "Saturn",
+      "radiusRot": 3560.84,
+      "radiusSize": 0.7345,
+      "rotationTime": 79.33
+    },
+    {
+      "name": "Ariel",
+      "planet": "Uranus",
+      "radiusRot": 190.9,
+      "radiusSize": 0.5789,
+      "rotationTime": 2.52
+    },
+    {
+      "name": "Umbriel",
+      "planet": "Uranus",
+      "radiusRot": 266,
+      "radiusSize": 0.5847,
+      "rotationTime": 4.144
+    },
+    {
+      "name": "Titania",
+      "planet": "Uranus",
+      "radiusRot": 436.3,
+      "radiusSize": 0.7889,
+      "rotationTime": 8.706
+    },
+    {
+      "name": "Oberon",
+      "planet": "Uranus",
+      "radiusRot": 583.5,
+      "radiusSize": 0.7614,
+      "rotationTime": 13.46
+    },
+    {
+      "name": "Miranda",
+      "planet": "Uranus",
+      "radiusRot": 129.9,
+      "radiusSize": 0.2358,
+      "rotationTime": 1.413
+    },
+    {
+      "name": "Triton",
+      "planet": "Neptune",
+      "radiusRot": 354.8,
+      "radiusSize": 1.3534,
+      "rotationTime": 5.877,
+      "retrograde": true
+    }
+  ]
+}
