@@ -123,7 +123,6 @@ class Loader
 
   // Setup menu functions
   // settings = {
-    //   timeScaling: 1,
     //   planetPaths: true,
     //   moonPaths: true,
     //   moonPathLength: 1,
@@ -133,41 +132,49 @@ class Loader
     // };
   static setupMenuEvents()
   {
+    // Showing/Hiding the menu bar
     let btnMenu = document.getElementById('btnMenu');
     let menuBar = document.getElementById('menuBar');
-    let btnsBack = document.getElementsByClassName('btnBack');
-    let btnMenuScaling = document.getElementById('btnMenuScaling');
-    let btnMenuFocus = document.getElementById('btnMenuFocus');
-    let inpScalingTime = document.getElementById('inpScalingTime');
-    let btnResetSettings = document.getElementById('btnResetSettings');
 
     btnMenu.onmouseover = () => {
       btnMenu.style.display = 'none';
       menuBar.style.display = 'flex';
     }
-
     menuBar.onmouseleave = () => {
-      btnMenu.style.display = 'block';
-      menuBar.style.display = 'none';
+      btnMenu.style.display = '';
+      menuBar.style.display = '';
+    }
+
+    // Navigating the menu
+    let btnsMenuChange = document.getElementsByClassName('btnMenuChange');
+    let btnsBack = document.getElementsByClassName('btnBack');
+
+    let inpScalingTime = document.getElementById('inpScalingTime');
+    let btnResetSettings = document.getElementById('btnResetSettings');
+
+    for (let btn of btnsMenuChange)
+    {
+      btn.onclick = (ev) => {
+        let hide = ev.target.parentElement;
+        let show = document.getElementById(ev.target.name);
+        hide.style.display = '';
+        show.style.display = 'flex';
+        show.children[0].style.display = 'flex';
+      }
     }
 
     for (let btn of btnsBack)
     {
       btn.onclick = (ev) => {
-        this.showMenu(ev.target.parentNode.parentNode.id);
+        let top = ev.target.parentElement.parentElement.parentElement;
+        let current = ev.target.parentElement;
+        top.children[0].style.display = 'flex';
+        current.style.display = '';
+        current.parentElement.style.display = '';
       }
     }
 
-    btnMenuScaling.onclick = () => {
-      this.showMenu('menuScaling');
-    }
-    this.setupMenuScaling();
-
-    btnMenuFocus.onclick = () => {
-      this.showMenu('menuFocus');
-    }
-    this.setupMenuFocus();
-
+    // Setup main menu
     inpScalingTime.oninput = (ev) => {
       settings.timeScaling = ev.target.value;
     }
@@ -191,8 +198,15 @@ class Loader
       this.resetMenu();
     }
 
+    // Setup submenus
+    this.setupMenuScaling();
+    this.setupMenuFocus();
+
+
     // Initalize menu
-    this.showMenu('menuMain');
+    let menuMain = document.getElementById('menuMain');
+    menuMain.style.display = 'flex';
+    menuMain.children[0].style.display = 'flex';
     this.resetMenu();
   }
 
@@ -244,7 +258,7 @@ class Loader
 
   static setupMenuFocus()
   {
-    let createButton = (innerHTML) => {
+    let createFocusButton = (innerHTML) => {
       let btn = document.createElement('button');
       btn.className = 'cMenuButton';
       btn.innerHTML = innerHTML;
@@ -252,37 +266,28 @@ class Loader
       return btn;
     }
 
-    let menuFocus = document.getElementById('menuFocus');
-    let btnBack = menuFocus.getElementsByClassName('btnBack')[0];
+    let menuFocus_Stars_Control = document.getElementById('menuFocus_Stars').children[0];
+    let menuFocus_Planets_Control = document.getElementById('menuFocus_Planets').children[0];
+    let menuFocus_Moons_Control = document.getElementById('menuFocus_Moons').children[0];
+    let btnBack;
 
     fetch('./res/objects.json')
     .then(res => res.json())
     .then(objects => {
+      btnBack = menuFocus_Stars_Control.children[0];
       objects.stars.forEach(star => {
-        menuFocus.insertBefore(createButton(star.name), btnBack);
+        menuFocus_Stars_Control.insertBefore(createFocusButton(star.name), btnBack);
       });
+      btnBack = menuFocus_Planets_Control.children[0];
       objects.planets.forEach(planet => {
-        menuFocus.insertBefore(createButton(planet.name), btnBack);
+        menuFocus_Planets_Control.insertBefore(createFocusButton(planet.name), btnBack);
       });
+      btnBack = menuFocus_Moons_Control.children[0];
       objects.moons.forEach(moon => {
-        menuFocus.insertBefore(createButton(moon.name), btnBack);
+        menuFocus_Moons_Control.insertBefore(createFocusButton(moon.name), btnBack);
       })
     });
   }
-
-  static showMenu(menuName)
-  {
-    menuName = (menuName === 'menuBar') ? 'menuMain' : menuName;
-    let menuAll = document.getElementsByClassName('cMenu');
-    let menuActive = document.getElementById(menuName);
-    
-    for (let menu of menuAll)
-    {
-      menu.style.display = 'none';
-    }
-    menuActive.style.display = 'flex';
-  }
-
 
   static resetMenu()
   {
