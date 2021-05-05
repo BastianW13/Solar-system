@@ -137,11 +137,7 @@ class Loader
       settings.offsetY -= dy;
     }
 
-<<<<<<< HEAD
     let slider = document.getElementById('inpScalingAll');
-=======
-    slider = document.getElementById('inpScalingAll');
->>>>>>> 2f09145eb03f82ee1bdbd937fc299f9e3a6e7673
     min = parseInt(slider.min);
     max = parseInt(slider.max);
     CVS_MAIN.onwheel = (ev) => {
