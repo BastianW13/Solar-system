@@ -109,7 +109,7 @@ class Loader
     CVS_MAIN.ontouchstart = (ev) => {
       ev.preventDefault();
       settings.focus = '';
-      touch = ev.changedTouches[0];
+      const touch = ev.changedTouches[0];
       xStart = touch.clientX;
       yStart = touch.clientY;
     }
@@ -128,7 +128,7 @@ class Loader
     }
     CVS_MAIN.ontouchmove = (ev) => {
       ev.preventDefault();
-      touch = ev.changedTouches[0];
+      const touch = ev.changedTouches[0];
       dx = touch.clientX - xStart;
       dy = touch.clientY - yStart;
       xStart = touch.clientX;
@@ -142,7 +142,7 @@ class Loader
     let max = parseInt(slider.max);
     CVS_MAIN.onwheel = (ev) => {
       ev.preventDefault();
-      current = parseFloat(slider.value);
+      let current = parseFloat(slider.value);
       current -= ev.deltaY * 0.05;
       current = Math.max(Math.min(current, max), min);
       slider.value = current;
