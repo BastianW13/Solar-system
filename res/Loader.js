@@ -138,8 +138,8 @@ class Loader
     }
 
     let slider = document.getElementById('inpScalingAll');
-    min = parseInt(slider.min);
-    max = parseInt(slider.max);
+    let min = parseInt(slider.min);
+    let max = parseInt(slider.max);
     CVS_MAIN.onwheel = (ev) => {
       ev.preventDefault();
       current = parseFloat(slider.value);
