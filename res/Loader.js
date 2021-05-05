@@ -106,6 +106,13 @@ class Loader
       xStart = ev.clientX;
       yStart = ev.clientY;
     }
+    CVS_MAIN.ontouchstart = (ev) => {
+      ev.preventDefault();
+      settings.focus = '';
+      touch = ev.changedTouches[0];
+      xStart = touch.clientX;
+      yStart = touch.clientY;
+    }
 
     CVS_MAIN.onmousemove = (ev) => {
       if (ev.buttons === 1)
@@ -118,6 +125,28 @@ class Loader
         settings.offsetX -= dx;
         settings.offsetY -= dy;
       }
+    }
+    CVS_MAIN.ontouchmove = (ev) => {
+      ev.preventDefault();
+      touch = ev.changedTouches[0];
+      dx = touch.clientX - xStart;
+      dy = touch.clientY - yStart;
+      xStart = touch.clientX;
+      yStart = touch.clientY;
+      settings.offsetX -= dx;
+      settings.offsetY -= dy;
+    }
+
+    slider = document.getElementById('inpScalingAll');
+    min = parseInt(slider.min);
+    max = parseInt(slider.max);
+    CVS_MAIN.onwheel = (ev) => {
+      ev.preventDefault();
+      current = parseFloat(slider.value);
+      current -= ev.deltaY * 0.05;
+      current = Math.max(Math.min(current, max), min);
+      slider.value = current;
+      settings.totalScaling = Math.pow(1.5, current);
     }
   }
 
