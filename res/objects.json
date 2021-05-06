@@ -241,6 +241,12 @@
       "planet": "Saturn",
       "minRadius": 7,
       "maxRadius": 80
+    },
+    {
+      "name": "AsteroidBelt",
+      "star": "Sun",
+      "minRadius": 344075,
+      "maxRadius": 493673
     }
   ]
 }

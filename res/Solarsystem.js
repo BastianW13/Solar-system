@@ -35,7 +35,7 @@ class Solarsystem
       });
       // Rings
       objects.rings.forEach(r => {
-        let p = this.planets.get(r.planet);
+        let p = this.planets.get(r.planet) || this.stars.get(r.star);
         obj = new PlanetRing(p, r.minRadius, r.maxRadius);
         this.rings.set(r.name, obj);
       });
