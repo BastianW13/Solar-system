@@ -127,14 +127,17 @@ class Loader
       }
     }
     CVS_MAIN.ontouchmove = (ev) => {
-      ev.preventDefault();
-      const touch = ev.changedTouches[0];
-      dx = touch.clientX - xStart;
-      dy = touch.clientY - yStart;
-      xStart = touch.clientX;
-      yStart = touch.clientY;
-      settings.offsetX -= dx;
-      settings.offsetY -= dy;
+      if ev.touches.length == 1
+      {
+        ev.preventDefault();
+        const touch = ev.changedTouches[0];
+        dx = touch.clientX - xStart;
+        dy = touch.clientY - yStart;
+        xStart = touch.clientX;
+        yStart = touch.clientY;
+        settings.offsetX -= dx;
+        settings.offsetY -= dy;
+      }
     }
 
     let slider = document.getElementById('inpScalingAll');
@@ -148,6 +151,27 @@ class Loader
       slider.value = current;
       settings.totalScaling = Math.pow(1.5, current);
     }
+    let dist = 0
+    CVS_MAIN.addEventListener('touchstart', (ev) => {
+      if ev.touches.length == 2
+      {
+        dist = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
+      }
+    })
+    CVS_MAIN.addEventListener('touchmove', (ev) => {
+      if ev.touches.length == 2
+      {
+        ev.preventDefault();
+        let dist2 = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
+        let delta = dist2 - dist;
+        dist = dist2;
+        let current = parseFloat(slider.value);
+        current -= delta * 0.05;
+        current = Math.max(Math.min(current, max), min);
+        slider.value = current;
+        settings.totalScaling = Math.pos(1.5, current);
+      }
+    })
   }
 
   // Setup menu functions
