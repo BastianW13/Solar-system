@@ -104,7 +104,6 @@ class Loader
 
     CVS_MAIN.onmousedown = (ev) => {
       ev.preventDefault();
-      settings.focus = '';
       xStart = ev.clientX;
       yStart = ev.clientY;
     }
@@ -113,7 +112,6 @@ class Loader
       if (ev.touches.length == 1)
       {
         pinch = false;
-        settings.focus = '';
         const touch = ev.changedTouches[0];
         xStart = touch.clientX;
         yStart = touch.clientY;
@@ -129,6 +127,7 @@ class Loader
       if (ev.buttons === 1)
       {
         ev.preventDefault();
+        settings.focus = '';
         dx = ev.clientX - xStart;
         dy = ev.clientY - yStart;
         xStart = ev.clientX;
@@ -141,6 +140,7 @@ class Loader
       ev.preventDefault();
       if (ev.touches.length == 1 && !pinch)
       {
+        settings.focus = '';
         const touch = ev.changedTouches[0];
         dx = touch.clientX - xStart;
         dy = touch.clientY - yStart;
