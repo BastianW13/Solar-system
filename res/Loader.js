@@ -99,6 +99,8 @@ class Loader
     let yStart = 0;
     let dx = 0;
     let dy = 0;
+    let dist = 0;
+    let pinch = false;
 
     CVS_MAIN.onmousedown = (ev) => {
       ev.preventDefault();
@@ -108,10 +110,19 @@ class Loader
     }
     CVS_MAIN.ontouchstart = (ev) => {
       ev.preventDefault();
-      settings.focus = '';
-      const touch = ev.changedTouches[0];
-      xStart = touch.clientX;
-      yStart = touch.clientY;
+      if (ev.touches.length == 1)
+      {
+        pinch = false;
+        settings.focus = '';
+        const touch = ev.changedTouches[0];
+        xStart = touch.clientX;
+        yStart = touch.clientY;
+      }
+      else if (ev.touches.length == 2)
+      {
+        pinch = true;
+        dist = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
+      }
     }
 
     CVS_MAIN.onmousemove = (ev) => {
@@ -127,9 +138,9 @@ class Loader
       }
     }
     CVS_MAIN.ontouchmove = (ev) => {
-      if (ev.touches.length == 1)
+      ev.preventDefault();
+      if (ev.touches.length == 1 && !pinch)
       {
-        ev.preventDefault();
         const touch = ev.changedTouches[0];
         dx = touch.clientX - xStart;
         dy = touch.clientY - yStart;
@@ -137,6 +148,17 @@ class Loader
         yStart = touch.clientY;
         settings.offsetX -= dx;
         settings.offsetY -= dy;
+      }
+      else if (ev.touches.length == 2)
+      {
+        let dist2 = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
+        let delta = dist2 - dist;
+        dist = dist2;
+        let current = parseFloat(slider.value);
+        current += delta * 0.005;
+        current = Math.max(Math.min(current, max), min);
+        slider.value = current;
+        settings.totalScaling = Math.pow(1.5, current);
       }
     }
 
@@ -151,26 +173,8 @@ class Loader
       slider.value = current;
       settings.totalScaling = Math.pow(1.5, current);
     }
-    let dist = 0
-    CVS_MAIN.addEventListener('touchstart', (ev) => {
-      if (ev.touches.length == 2)
-      {
-        dist = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
-      }
-    })
     CVS_MAIN.addEventListener('touchmove', (ev) => {
-      if (ev.touches.length == 2)
-      {
-        ev.preventDefault();
-        let dist2 = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
-        let delta = dist2 - dist;
-        dist = dist2;
-        let current = parseFloat(slider.value);
-        current -= delta * 0.001;
-        current = Math.max(Math.min(current, max), min);
-        slider.value = current;
-        settings.totalScaling = Math.pow(1.5, current);
-      }
+
     })
   }
 
