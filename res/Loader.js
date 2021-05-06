@@ -156,6 +156,7 @@ class Loader
       if (ev.touches.length == 2)
       {
         dist = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
+        alert(dist)
       }
     })
     CVS_MAIN.addEventListener('touchmove', (ev) => {
@@ -164,6 +165,7 @@ class Loader
         ev.preventDefault();
         let dist2 = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
         let delta = dist2 - dist;
+        alert(delta)
         dist = dist2;
         let current = parseFloat(slider.value);
         current -= delta * 0.05;
