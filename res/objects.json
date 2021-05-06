@@ -239,6 +239,7 @@
     {
       "name": "SaturnRing",
       "planet": "Saturn",
+      "color": "rgb(121,103,83)",
       "minRadius": 7,
       "maxRadius": 80
     },

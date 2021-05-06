@@ -44,7 +44,7 @@ class Solarsystem
         else if (r.star)
         {
           let s = this.stars.get(r.star);
-          obj = new StarRing(p, r.minRadius, r.maxRadius);
+          obj = new StarRing(s, r.minRadius, r.maxRadius);
           this.rings.set(r.name, obj);
         }
       });
