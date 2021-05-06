@@ -127,7 +127,7 @@ class Loader
       }
     }
     CVS_MAIN.ontouchmove = (ev) => {
-      if ev.touches.length == 1
+      if (ev.touches.len == 1)
       {
         ev.preventDefault();
         const touch = ev.changedTouches[0];
@@ -153,13 +153,13 @@ class Loader
     }
     let dist = 0
     CVS_MAIN.addEventListener('touchstart', (ev) => {
-      if ev.touches.length == 2
+      if (ev.touches.len == 2)
       {
         dist = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
       }
     })
     CVS_MAIN.addEventListener('touchmove', (ev) => {
-      if ev.touches.length == 2
+      if (ev.touches.len == 2)
       {
         ev.preventDefault();
         let dist2 = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
