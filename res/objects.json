@@ -232,5 +232,15 @@
       "rotationTime": 5.877,
       "retrograde": true
     }
+  ],
+
+  "rings":
+  [
+    {
+      "name": "SaturnRing",
+      "planet": "Saturn",
+      "minRadius": 7,
+      "maxRadius": 80
+    }
   ]
 }

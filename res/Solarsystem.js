@@ -6,6 +6,7 @@ class Solarsystem
     this.stars = new Map();
     this.planets = new Map();
     this.moons = new Map();
+    this.rings = new Map();
   }
 
   static setup()
@@ -31,7 +32,13 @@ class Solarsystem
         let p = this.planets.get(m.planet);
         obj = new Moon(p, m.radiusRot, m.radiusSize, m.rotationTime, m.color || undefined, m.retrograde || undefined);
         this.moons.set(m.name, obj);
-      })
+      });
+      // Rings
+      objects.rings.forEach(r => {
+        let p = this.planets.get(r.planet);
+        obj = new PlanetRing(p, r.minRadius, r.maxRadius);
+        this.rings.set(r.name, obj);
+      });
     });
   }
 
@@ -64,6 +71,10 @@ class Solarsystem
     // Output moons
     this.moons.forEach(moon => {
       moon.output(settings.offsetX, settings.offsetY);
+    })
+    // Output rings
+    this.rings.forEach(ring => {
+      ring.output(settings.offsetX, settings.offsetY);
     })
   }
 }
