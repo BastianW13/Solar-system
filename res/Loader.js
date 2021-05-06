@@ -155,25 +155,21 @@ class Loader
     CVS_MAIN.addEventListener('touchstart', (ev) => {
       if (ev.touches.length == 2)
       {
-        alert('Double touch')
         dist = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
-        alert(dist)
       }
     })
     CVS_MAIN.addEventListener('touchmove', (ev) => {
       if (ev.touches.length == 2)
       {
-        alert('PINCH')
         ev.preventDefault();
         let dist2 = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
         let delta = dist2 - dist;
-        alert(delta)
         dist = dist2;
         let current = parseFloat(slider.value);
-        current -= delta * 0.05;
+        current -= delta * 0.001;
         current = Math.max(Math.min(current, max), min);
         slider.value = current;
-        settings.totalScaling = Math.pos(1.5, current);
+        settings.totalScaling = Math.pow(1.5, current);
       }
     })
   }
