@@ -169,7 +169,30 @@ class PlanetRing
     CTX_MAIN.save();
     CTX_MAIN.translate(-offsetX, -offsetY);
     CTX_MAIN.fillStyle = this.color;
-    // Ring around Planet
+    CTX_MAIN.globalAlpha = 0.5;
+    CTX_MAIN.beginPath();
+    CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + this.radMax(), 0, 2*Math.PI, false);
+    CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + this.radMin(), 0, 2*Math.PI, true);
+    CTX_MAIN.fill();
+
+    CTX_MAIN.restore();
+  }
+}
+
+class StarRing
+{
+  constructor(center, minRadius, maxRadius, color='grey')
+  {
+    this.center = center;
+    this.color = color;
+    this.radMin = () => {return minRadius * settings.planetDistanceScaling * settings.totalScaling};
+    this.radMax = () => {return maxRadius * settings.planetDistanceScaling * settings.totalScaling};
+  }
+
+  output(offsetX = 0, offsetY = 0) {
+    CTX_MAIN.save();
+    CTX_MAIN.translate(-offsetX, -offsetY);
+    CTX_MAIN.fillStyle = this.color;
     CTX_MAIN.globalAlpha = 0.5;
     CTX_MAIN.beginPath();
     CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + this.radMax(), 0, 2*Math.PI, false);
