@@ -219,7 +219,7 @@ class StarRing
       while (r < max)
       {
         r += Math.random() * d;
-        this.rads.append(r);
+        this.rads.push(r);
       }
     }
   }
