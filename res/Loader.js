@@ -173,9 +173,6 @@ class Loader
       slider.value = current;
       settings.totalScaling = Math.pow(1.5, current);
     }
-    CVS_MAIN.addEventListener('touchmove', (ev) => {
-
-    })
   }
 
   // Setup menu functions
