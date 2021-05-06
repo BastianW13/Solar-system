@@ -59,6 +59,9 @@ class Solarsystem
     this.moons.forEach(moon => {
       moon.update(deltaTime);
     })
+    this.rings.forEach(ring => {
+      ring.update(deltaTime);
+    })
   }
 
   static output()

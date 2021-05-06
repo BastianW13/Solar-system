@@ -165,16 +165,28 @@ class PlanetRing
     this.radMax = () => {return maxRadius * settings.planetSizeScaling * settings.totalScaling};
   }
 
-  output(offsetX = 0, offsetY = 0) {
+  update(deltaTime)
+  {
+
+  }
+
+  output(offsetX = 0, offsetY = 0)
+  {
     CTX_MAIN.save();
     CTX_MAIN.translate(-offsetX, -offsetY);
     CTX_MAIN.fillStyle = this.color;
     CTX_MAIN.globalAlpha = 0.5;
-    CTX_MAIN.beginPath();
-    CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + this.radMax(), 0, 2*Math.PI, false);
-    CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + this.radMin(), 0, 2*Math.PI, true);
-    CTX_MAIN.fill();
-
+    CTX_MAIN.strokeStyle = this.color;
+    CTX_MAIN.setLineDash([10, 3]);
+    let r = this.radMin();
+    let d = this.radMax() - this.radMin();
+    while (r < this.radMax())
+    {
+    	CTX_MAIN.beginPath();
+    	CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + r, 0 +r, 2*Math.PI+r);
+    	CTX_MAIN.stroke();
+    	r += d * 0.02;
+    }
     CTX_MAIN.restore();
   }
 }
@@ -187,17 +199,46 @@ class StarRing
     this.color = color;
     this.radMin = () => {return minRadius * settings.planetDistanceScaling * settings.totalScaling};
     this.radMax = () => {return maxRadius * settings.planetDistanceScaling * settings.totalScaling};
+    // Define this.rads as list with radians for drawing multiple circles
+    this.rads = [];
+    this.threshold = 1;
+    this.accTime = 0;
   }
 
-  output(offsetX = 0, offsetY = 0) {
+  // Create Update function counting up and defining this.rads new after a certain amount of time, so it doesnt flash as wildly
+  update(deltaTime)
+  {
+    this.accTime += deltaTime;
+    if (this.accTime > this.threshold)
+    {
+      this.accTime = 0;
+      this.rads = [];
+      let r = this.radMin();
+      let max = this.radMax();
+      let d = max - r;
+      while (r < max)
+      {
+        r += Math.random() * d;
+        this.rads.append(r);
+      }
+    }
+  }
+
+  output(offsetX = 0, offsetY = 0)
+  {
     CTX_MAIN.save();
     CTX_MAIN.translate(-offsetX, -offsetY);
     CTX_MAIN.fillStyle = this.color;
     CTX_MAIN.globalAlpha = 0.5;
-    CTX_MAIN.beginPath();
-    CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + this.radMax(), 0, 2*Math.PI, false);
-    CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + this.radMin(), 0, 2*Math.PI, true);
-    CTX_MAIN.fill();
+
+    CTX_MAIN.strokeStyle = this.color;
+
+    this.rads.forEach(r => {
+      CTX_MAIN.beginPath();
+      CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + r, 0, 2*Math.PI);
+      CTX_MAIN.stroke();
+      r += d * 0.02;
+    })
 
     CTX_MAIN.restore();
   }
