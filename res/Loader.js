@@ -167,11 +167,9 @@ class Loader
         dist = dist2;
         let current = parseFloat(slider.value);
         current -= delta * 0.001;
-        alert(current)
         current = Math.max(Math.min(current, max), min);
-        alert(current)
         slider.value = current;
-        settings.totalScaling = Math.pos(1.5, current);
+        settings.totalScaling = Math.pow(1.5, current);
       }
     })
   }
