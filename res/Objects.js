@@ -65,9 +65,10 @@ class Planet
     CTX_MAIN.fill();
 
     // Ring around Planet
+    CTX_MAIN.globalAlpha = 0.5;
     CTX_MAIN.beginPath();
-    CTX_MAIN.arc(this.pos.x, this.pos.y, this.radiusSize() * 1.5, 2*Math.PI, false);
-    CTX_MAIN.arc(this.pos.x, this.pos.y, this.radiusSize() * 1.2, 2*Math.PI, true);
+    CTX_MAIN.arc(this.pos.x, this.pos.y, this.radiusSize() * 1.5, 0,  2*Math.PI, false);
+    CTX_MAIN.arc(this.pos.x, this.pos.y, this.radiusSize() * 1.2, 0, 2*Math.PI, true);
     CTX_MAIN.fill();
 
     CTX_MAIN.restore();
