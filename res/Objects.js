@@ -237,7 +237,6 @@ class StarRing
       CTX_MAIN.beginPath();
       CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + r, 0, 2*Math.PI);
       CTX_MAIN.stroke();
-      r += d * 0.02;
     })
 
     CTX_MAIN.restore();
