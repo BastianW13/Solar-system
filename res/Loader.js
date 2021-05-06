@@ -155,7 +155,6 @@ class Loader
     CVS_MAIN.addEventListener('touchstart', (ev) => {
       if (ev.touches.length == 2)
       {
-        alert('Double touch')
         dist = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
         alert(dist)
       }
@@ -163,7 +162,6 @@ class Loader
     CVS_MAIN.addEventListener('touchmove', (ev) => {
       if (ev.touches.length == 2)
       {
-        alert('PINCH')
         ev.preventDefault();
         let dist2 = Math.hypot(ev.touches[0].clientX - ev.touches[1].clientX, ev.touches[0].clientY - ev.touches[1].clientY);
         let delta = dist2 - dist;
