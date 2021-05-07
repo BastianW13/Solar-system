@@ -205,7 +205,7 @@ class StarRing
     while (x < 1)
     {
       x += Math.random() * 0.1;
-      this.radSteps-push(x);
+      this.radSteps.push(x);
     }
   }
 
