@@ -167,7 +167,7 @@ class PlanetRing
     let x = 0;
     while (x < 1)
     {
-      x += Math.random() * 0.01;
+      x += Math.random() * 0.03;
       this.radSteps.push(x);
     }
   }
@@ -208,7 +208,7 @@ class StarRing
     let x = 0;
     while (x < 1)
     {
-      x += Math.random() * 0.01;
+      x += Math.random() * 0.03;
       this.radSteps.push(x);
     }
   }
