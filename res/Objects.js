@@ -200,28 +200,18 @@ class StarRing
     this.radMin = () => {return minRadius * settings.planetDistanceScaling * settings.totalScaling};
     this.radMax = () => {return maxRadius * settings.planetDistanceScaling * settings.totalScaling};
     // Define this.rads as list with radians for drawing multiple circles
-    this.rads = [];
-    this.threshold = 1;
-    this.accTime = 0;
+    this.radSteps = [];
+    let x = 0;
+    while (x < 1)
+    {
+      x += Math.random() * 0.1;
+      this.radSteps-push(x);
+    }
   }
 
   // Create Update function counting up and defining this.rads new after a certain amount of time, so it doesnt flash as wildly
   update(deltaTime)
   {
-    this.accTime += deltaTime;
-    if (this.accTime > this.threshold)
-    {
-      this.accTime = 0;
-      this.rads = [];
-      let r = this.radMin();
-      let max = this.radMax();
-      let d = max - r;
-      while (r < max)
-      {
-        r += Math.random() * d;
-        this.rads.push(r);
-      }
-    }
   }
 
   output(offsetX = 0, offsetY = 0)
@@ -233,9 +223,11 @@ class StarRing
 
     CTX_MAIN.strokeStyle = this.color;
 
-    this.rads.forEach(r => {
+    let min = this.radMin();
+    let d = this.radMax() - this.radMin();
+    this.radSteps.forEach(r => {
       CTX_MAIN.beginPath();
-      CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + r, 0, 2*Math.PI);
+      CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + min + r * d, 0, 2*Math.PI);
       CTX_MAIN.stroke();
     })
 
