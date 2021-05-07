@@ -163,6 +163,13 @@ class PlanetRing
     this.color = color;
     this.radMin = () => {return minRadius * settings.planetSizeScaling * settings.totalScaling};
     this.radMax = () => {return maxRadius * settings.planetSizeScaling * settings.totalScaling};
+    this.radSteps = [];
+    let x = 0;
+    while (x < 1)
+    {
+      x += Math.random() * 0.05;
+      this.radSteps.push(x);
+    }
   }
 
   update(deltaTime)
@@ -178,15 +185,13 @@ class PlanetRing
     CTX_MAIN.globalAlpha = 0.5;
     CTX_MAIN.strokeStyle = this.color;
     CTX_MAIN.setLineDash([10, 3]);
-    let r = this.radMin();
+    let min = this.radMin();
     let d = this.radMax() - this.radMin();
-    while (r < this.radMax())
-    {
-    	CTX_MAIN.beginPath();
-    	CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + r, 0 +r, 2*Math.PI+r);
-    	CTX_MAIN.stroke();
-    	r += d * 0.02;
-    }
+    this.radSteps.forEach(r => {
+      CTX_MAIN.beginPath();
+      CTX_MAIN.arc(this.center.pos.x, this.center.pos.y, this.center.radiusSize() + min + r * d, 0, 2*Math.PI);
+      CTX_MAIN.stroke();
+    })
     CTX_MAIN.restore();
   }
 }
@@ -204,7 +209,7 @@ class StarRing
     let x = 0;
     while (x < 1)
     {
-      x += Math.random() * 0.1;
+      x += Math.random() * 0.01;
       this.radSteps.push(x);
     }
   }
