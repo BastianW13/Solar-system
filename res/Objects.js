@@ -167,7 +167,7 @@ class PlanetRing
     let x = 0;
     while (x < 1)
     {
-      x += Math.random() * 0.05;
+      x += Math.random() * 0.01;
       this.radSteps.push(x);
     }
   }
@@ -184,7 +184,6 @@ class PlanetRing
     CTX_MAIN.fillStyle = this.color;
     CTX_MAIN.globalAlpha = 0.5;
     CTX_MAIN.strokeStyle = this.color;
-    CTX_MAIN.setLineDash([10, 3]);
     let min = this.radMin();
     let d = this.radMax() - this.radMin();
     this.radSteps.forEach(r => {
