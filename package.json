@@ -1,0 +1,23 @@
+{
+  "name": "solarsystem",
+  "version": "1.0.0",
+  "description": "A simple simulation of the solar system",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BastianW13/Solarsystem.git"
+  },
+  "author": "Bastian Westerheide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BastianW13/Solarsystem/issues"
+  },
+  "homepage": "https://github.com/BastianW13/Solarsystem#readme",
+  "dependencies": {
+    "serve": "^13.0.2"
+  }
+}

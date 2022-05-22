@@ -17,6 +17,11 @@ class Star
     this.radiusSize = () => {return radiusSize * settings.starSizeScaling * settings.totalScaling};
   }
 
+  update(deltaTime)
+  {
+
+  }
+
   output(offsetX = 0, offsetY = 0)
   {
     CTX_MAIN.save();
