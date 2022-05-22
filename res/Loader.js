@@ -126,6 +126,10 @@ class Loader
         settings.offsetY -= dy;
       }
     }
+
+    CVS_MAIN.addEventListener("mousemove", (ev) => {
+      console.log(Solarsystem.findObject(ev.clientX + settings.offsetX, ev.clientY + settings.offsetY))
+    })
     CVS_MAIN.ontouchmove = (ev) => {
       ev.preventDefault();
       const touch = ev.changedTouches[0];

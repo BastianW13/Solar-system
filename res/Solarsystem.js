@@ -66,4 +66,26 @@ class Solarsystem
       moon.output(settings.offsetX, settings.offsetY);
     })
   }
+
+  static findObject(posX, posY)
+  {
+    let object = 0;
+
+    this.planets.forEach((planet, name) => {
+      if (posX < planet.pos.x + planet.radiusSize() && posX > planet.pos.x - planet.radiusSize() &&
+          posY < planet.pos.y + planet.radiusSize() && posY > planet.pos.y - planet.radiusSize()
+      )
+      {
+        object = name;
+      }
+    })
+    this.moons.forEach((moon, name) => {
+      if (posX < moon.pos.x + moon.radiusSize() && posX > moon.pos.x - moon.radiusSize() &&
+          posY < moon.pos.y + moon.radiusSize() && posY > moon.pos.y - moon.radiusSize())
+      {
+        object = name;
+      }
+    })
+    return object;
+  }
 }
